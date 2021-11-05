@@ -1,9 +1,13 @@
+import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { ThemeProvider } from 'styled-components';
+// import { darkTheme, lightTheme } from './contexts/themes';
+import GlobalStyle from './contexts/GlobalStyle';
+import { useThemeStore } from './contexts/themeContext';
 import styled from 'styled-components';
 import Header from './components/Header';
 import Home from './components/pages/Home';
 import Country from './components/pages/Country';
-import React from 'react';
 
 // Let's first try with... no wrapper at all
 // const Grid = styled.div`
@@ -16,17 +20,22 @@ import React from 'react';
 // `;
 
 const App = (): JSX.Element => {
+  const { theme } = useThemeStore();
+
   return (
     <React.Fragment>
-      <Router>
-        {/* <Grid> */}
-        <Header />
-        <Routes>
-          <Route path='/' element={<Home />} />
-          <Route path='/country/:cioc' element={<Country />} />
-        </Routes>
-        {/* </Grid> */}
-      </Router>
+      <ThemeProvider theme={theme}>
+        <GlobalStyle />
+        <Router>
+          {/* <Grid> */}
+          <Header />
+          <Routes>
+            <Route path='/' element={<Home />} />
+            <Route path='/country/:cioc' element={<Country />} />
+          </Routes>
+          {/* </Grid> */}
+        </Router>
+      </ThemeProvider>
     </React.Fragment>
   );
 };

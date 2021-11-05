@@ -1,16 +1,17 @@
 import { createGlobalStyle } from 'styled-components';
-import { ITheme } from './theme';
+import { ITheme } from './themes';
 
 const GlobalStyle = createGlobalStyle<{ theme: ITheme }>`
+
+    *, *::after, *::before {
+        box-sizing: border-box;
+    }
+
     body {
         margin: 0;
-        box-sizing: border-box;
-        background: ${(props) => props.theme.colors.light.background};
+        background: ${(props) => props.theme.colors.background};
+        color: ${(props) => props.theme.colors.text};
         font-family: 'Nunito Sans', sans-serif;
-
-        * {
-            box-sizing: border-box;
-        }
     }
 
 `;
