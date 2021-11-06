@@ -1,10 +1,13 @@
 import { ICountry, useCountries } from '../../data/useCountries';
 import styled from 'styled-components';
-import React from 'react';
+import Search from '../elements/Search';
+import { Padding } from '../mixins/Mixins';
 
-const Container = styled.div``;
-
-const Search = styled.div``;
+const Container = styled.div`
+  position: relative;
+  top: ${(props) => props.theme.sizes.header};
+  ${Padding};
+`;
 
 const CountryContainer = styled.div``;
 

@@ -1,17 +1,25 @@
 import styled from 'styled-components';
 import { useThemeStore } from '../contexts/themeContext';
 import { darkTheme, lightTheme } from '../contexts/themes';
+import { Padding, BoxShadow } from './mixins/Mixins';
+import MoonIcon from './elements/MoonIcon';
 
 const Container = styled.div`
+  position: fixed;
   display: flex;
   width: 100%;
-  height: 64px;
+  height: ${(props) => props.theme.sizes.header};
   flex-direction: row;
   justify-content: space-between;
-  padding-left: min(1rem, 5vw);
-  padding-right: min(1rem, 5vw);
+  ${Padding};
+  ${BoxShadow};
   background: ${(props) => props.theme.colors.elements};
-  box-shadow: 0 0 5px black;
+  z-index: 1;
+`;
+
+const StyledH6 = styled.h6`
+  font-weight: 300;
+  cursor: pointer;
 `;
 
 const Header = (): JSX.Element => {
@@ -27,8 +35,10 @@ const Header = (): JSX.Element => {
 
   return (
     <Container>
-      <h3>Where in the world</h3>
-      <h3 onClick={() => switchTheme()}>dark mode</h3>
+      <h3>Where in the world?</h3>
+      <StyledH6 onClick={() => switchTheme()}>
+        <MoonIcon filled={theme === darkTheme} /> Dark Mode
+      </StyledH6>
     </Container>
   );
 };

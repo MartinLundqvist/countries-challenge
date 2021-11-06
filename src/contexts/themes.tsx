@@ -5,7 +5,14 @@ export interface ITheme {
     text: string;
     input: string;
   };
+  sizes: {
+    padding: string;
+    header: string;
+  };
 }
+
+const padding = 'min(2rem, 5vw)';
+const header = '4rem';
 
 const darkTheme: ITheme = {
   colors: {
@@ -13,6 +20,10 @@ const darkTheme: ITheme = {
     background: 'hsl(207, 26%, 17%)',
     text: 'hsl(0, 0%, 100%)',
     input: 'hsl(0, 0%, 100%)',
+  },
+  sizes: {
+    padding: padding,
+    header: header,
   },
 };
 
@@ -22,6 +33,10 @@ const lightTheme: ITheme = {
     background: 'hsl(0, 0%, 98%)',
     text: 'hsl(200, 15%, 8%)',
     input: 'hsl(0, 0%, 52%)',
+  },
+  sizes: {
+    padding: padding,
+    header: header,
   },
 };
 
