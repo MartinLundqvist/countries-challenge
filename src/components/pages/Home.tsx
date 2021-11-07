@@ -2,6 +2,7 @@ import { ICountry, useCountries } from '../../data/useCountries';
 import styled from 'styled-components';
 import Search from '../elements/Search';
 import { Padding } from '../mixins/Mixins';
+import { useFilteredCountries } from '../../contexts/countriesContext';
 
 const Container = styled.div`
   position: relative;
@@ -12,22 +13,23 @@ const Container = styled.div`
 const CountryContainer = styled.div``;
 
 const Home = (): JSX.Element => {
-  const { data, isError, isLoading } = useCountries();
-
-  if (isLoading) return <h1>loading</h1>;
-  if (isError) return <h1>error...</h1>;
+  const { filteredData, isError, isLoading } = useFilteredCountries();
 
   return (
     <Container>
       <Search />
-      <CountryContainer>
-        <h1>Countries</h1>
-        <ul>
-          {data?.map((country, index) => (
-            <CountryCard key={index} country={country} />
-          ))}
-        </ul>
-      </CountryContainer>
+
+      {isLoading && <h4>Loading...</h4>}
+      {isError && <h4>An error ocurred..</h4>}
+      {!isLoading && !isError && (
+        <CountryContainer>
+          <ul>
+            {filteredData?.map((country, index) => (
+              <CountryCard key={index} country={country} />
+            ))}
+          </ul>
+        </CountryContainer>
+      )}
     </Container>
   );
 };
