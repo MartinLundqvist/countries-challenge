@@ -1,6 +1,56 @@
 import styled, { css } from 'styled-components';
-import { BoxShadow } from '../mixins/Mixins';
+import { BoxShadow, BoxShadowHovered } from '../mixins/Mixins';
 import { useSearchContext } from '../../contexts/searchContext';
+
+interface ISelectOption {
+  disabled?: boolean;
+  value: string | number;
+  option: string;
+}
+
+const countriesToShowOptions: ISelectOption[] = [
+  { value: 100, option: '# Countries', disabled: true },
+  { value: 10, option: '10' },
+  { value: 25, option: '25' },
+  { value: 50, option: '50' },
+  { value: 0, option: 'All' },
+];
+
+const regionsOptions: ISelectOption[] = [
+  {
+    value: 'X',
+    option: 'Filter by region',
+    disabled: true,
+  },
+  {
+    value: 'All',
+    option: 'All',
+  },
+  {
+    value: 'Asia',
+    option: 'Asia',
+  },
+  {
+    value: 'Americas',
+    option: 'Americas',
+  },
+  {
+    value: 'Oceania',
+    option: 'Oceania',
+  },
+  {
+    value: 'Europe',
+    option: 'Europe',
+  },
+  {
+    value: 'Africa',
+    option: 'Africa',
+  },
+  {
+    value: 'Antarctic',
+    option: 'Antarctic',
+  },
+];
 
 const Container = styled.div`
   display: flex;
@@ -21,6 +71,9 @@ const Sizing = css`
   color: ${(props) => props.theme.colors.input};
   outline: none;
   ${BoxShadow};
+  &:hover {
+    ${BoxShadowHovered};
+  }
 `;
 
 const Input = styled.input`
@@ -29,7 +82,7 @@ const Input = styled.input`
 `;
 
 const Select = styled.select`
-  width: max(min-content, 10%);
+  width: max(5rem, 10%);
   ${Sizing};
 `;
 const Spacer = styled.div`
@@ -81,22 +134,27 @@ const Search = (): JSX.Element => {
         name='regionfilter'
         onChange={(event) => handleRegionChange(event)}
       >
-        <option disabled>Filter by region</option>
-        <option>All</option>
-        <option>Africa</option>
-        <option>Asia</option>
-        <option>More</option>
-        <option>More...</option>
+        {regionsOptions.map((option) => (
+          <option
+            disabled={option.disabled && option.disabled}
+            value={option.value}
+          >
+            {option.option}
+          </option>
+        ))}
       </Select>
       <Select
         name='countriestoshow'
         onChange={(event) => handleCountriesToShowChange(event)}
       >
-        <option disabled># Countries</option>
-        <option>10</option>
-        <option>25</option>
-        <option>50</option>
-        <option>All</option>
+        {countriesToShowOptions.map((option) => (
+          <option
+            disabled={option.disabled && option.disabled}
+            value={option.value}
+          >
+            {option.option}
+          </option>
+        ))}
       </Select>
     </Container>
   );

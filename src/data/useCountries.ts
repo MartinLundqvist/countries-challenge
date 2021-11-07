@@ -34,8 +34,13 @@ const useCountries = (): IUseCountriesProps => {
           'https://restcountries.com/v3.1/all?fields=name,capital,region,flags,population,cioc'
         );
         if (results.ok) {
-          const rawData = await results.json();
+          const rawData: ICountry[] = await results.json();
           setData(rawData);
+          // // Temporary helper to retrieve the unique list of Regions from the API
+          // const distinctRegions = [
+          //   ...new Set(rawData?.map((country) => country.region)),
+          // ];
+          // console.log(distinctRegions);
         } else {
           setIsError(true);
           setData(null);

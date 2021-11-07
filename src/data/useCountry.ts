@@ -6,7 +6,7 @@ export interface ICountryDetail extends ICountry {
   name: {
     common: string;
     nativeName: {
-      eng: {
+      [id: string]: {
         official: string;
       };
     };
@@ -21,6 +21,7 @@ export interface ICountryDetail extends ICountry {
   languages: {
     [id: string]: string;
   };
+  borders: string[];
 }
 
 interface IUseCountryDetailProps {
@@ -42,11 +43,20 @@ const useCountry = (): IUseCountryDetailProps => {
         setIsError(false);
         setIsLoading(true);
         const results = await fetch(
-          `https://restcountries.com/v3.1/alpha/${iioc}?fields=name,capital,region,flags,population,cioc,subregion,tld,currencies,languages`
+          `https://restcountries.com/v3.1/alpha/${iioc}?fields=name,capital,region,flags,population,cioc,subregion,tld,currencies,languages,borders`
         );
         if (results.ok) {
           const rawData = await results.json();
-          setData(rawData);
+
+          // //Debug
+          // console.log(rawData);
+
+          // TODO: This might not be needed...
+          if (rawData.length > 1) {
+            setData(rawData[0]);
+          } else {
+            setData(rawData);
+          }
         } else {
           setIsError(true);
           setData(null);

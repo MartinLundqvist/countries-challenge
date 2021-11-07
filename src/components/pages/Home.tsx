@@ -1,7 +1,7 @@
-import { ICountry, useCountries } from '../../data/useCountries';
 import styled from 'styled-components';
 import Search from '../elements/Search';
 import { Padding } from '../mixins/Mixins';
+import CountryCard from '../elements/CountryCard';
 import { useFilteredCountries } from '../../contexts/countriesContext';
 
 const Container = styled.div`
@@ -10,7 +10,12 @@ const Container = styled.div`
   ${Padding};
 `;
 
-const CountryContainer = styled.div``;
+const CountryContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 2rem;
+`;
 
 const Home = (): JSX.Element => {
   const { filteredData, isError, isLoading } = useFilteredCountries();
@@ -23,26 +28,12 @@ const Home = (): JSX.Element => {
       {isError && <h4>An error ocurred..</h4>}
       {!isLoading && !isError && (
         <CountryContainer>
-          <ul>
-            {filteredData?.map((country, index) => (
-              <CountryCard key={index} country={country} />
-            ))}
-          </ul>
+          {filteredData?.map((country, index) => (
+            <CountryCard key={index} country={country} />
+          ))}
         </CountryContainer>
       )}
     </Container>
-  );
-};
-
-interface ICountryCardProps {
-  country: ICountry;
-}
-
-const CountryCard = ({ country }: ICountryCardProps): JSX.Element => {
-  return (
-    <li>
-      <a href={`/country/${country.cioc}`}>{country.name.common}</a>
-    </li>
   );
 };
 

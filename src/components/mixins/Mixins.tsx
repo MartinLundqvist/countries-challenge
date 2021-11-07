@@ -9,4 +9,8 @@ const BoxShadow = css`
   box-shadow: 0 0 5px #00000035;
 `;
 
-export { Padding, BoxShadow };
+const BoxShadowHovered = css`
+  box-shadow: 0 0 10px #00000050;
+`;
+
+export { Padding, BoxShadow, BoxShadowHovered };
