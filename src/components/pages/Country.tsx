@@ -18,6 +18,8 @@ interface IBordering {
 
 const Country = (): JSX.Element => {
   const { cioc } = useParams();
+
+  //TODO: Refactor to do all data fetching including the array of bordering countries
   const { data, isError, isLoading, setIioc } = useCountry();
   const [bordering, setBordering] = useState<IBordering[]>([]);
   const navigate = useNavigate();
