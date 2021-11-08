@@ -1,19 +1,19 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
-import { ThemeStore } from './contexts/themeContext';
-import { SearchContextProvider } from './contexts/searchContext';
-import { CountriesContextProvider } from './contexts/countriesContext';
+import { ThemeContextProvider } from './contexts/ThemeContextProvider';
+import { SearchContextProvider } from './contexts/SearchContextProvider';
+import { CountryContextProvider } from './contexts/CountryContextProvider';
 
 ReactDOM.render(
   <React.StrictMode>
-    <ThemeStore>
+    <ThemeContextProvider>
       <SearchContextProvider>
-        <CountriesContextProvider>
+        <CountryContextProvider>
           <App />
-        </CountriesContextProvider>
+        </CountryContextProvider>
       </SearchContextProvider>
-    </ThemeStore>
+    </ThemeContextProvider>
   </React.StrictMode>,
   document.getElementById('root')
 );

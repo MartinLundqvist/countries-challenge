@@ -1,4 +1,4 @@
-import { ICountry } from '../../data/useCountries';
+import { ICountry } from '../../types';
 import styled from 'styled-components';
 import { BoxShadow, BoxShadowHovered } from '../mixins/Mixins';
 import { Property, Value, Title } from '../elements/Typography';
@@ -46,7 +46,7 @@ interface ICountryCardProps {
 
 const CountryCard = ({ country }: ICountryCardProps): JSX.Element => {
   return (
-    <StyledLink to={`/country/${country.cioc}`}>
+    <StyledLink to={`/country/${country.cca3}`}>
       <CardContainer>
         <Flag source={country.flags.png} />
         <CardSubContainer>

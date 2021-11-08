@@ -1,6 +1,7 @@
 import styled, { css } from 'styled-components';
 import { BoxShadow, BoxShadowHovered } from '../mixins/Mixins';
-import { useSearchContext } from '../../contexts/searchContext';
+import { useSearch } from '../../hooks/useSearch';
+import { useEffect } from 'react';
 
 interface ISelectOption {
   disabled?: boolean;
@@ -89,10 +90,6 @@ const Spacer = styled.div`
   flex-grow: 1;
 `;
 
-//Contexts:
-//Boundary: Max #countries to show (0 (which means no filter), 10, 25, 50, )
-//Filters applied: Region, Country name (starts with)
-
 const Search = (): JSX.Element => {
   const {
     countrySearch,
@@ -101,7 +98,7 @@ const Search = (): JSX.Element => {
     setCountrySearch,
     setRegionFilter,
     setCountriesToShow,
-  } = useSearchContext();
+  } = useSearch();
 
   const handleSearchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setCountrySearch(event.target.value);
@@ -121,6 +118,17 @@ const Search = (): JSX.Element => {
     }
   };
 
+  //TODO: Replace with stateful filters...
+  const clearFilters = () => {
+    setCountrySearch('');
+    setCountriesToShow(10);
+    setRegionFilter('All');
+  };
+
+  useEffect(() => {
+    clearFilters();
+  }, []);
+
   return (
     <Container>
       <Input
@@ -136,6 +144,7 @@ const Search = (): JSX.Element => {
       >
         {regionsOptions.map((option) => (
           <option
+            key={option.value}
             disabled={option.disabled && option.disabled}
             value={option.value}
           >
@@ -149,6 +158,7 @@ const Search = (): JSX.Element => {
       >
         {countriesToShowOptions.map((option) => (
           <option
+            key={option.value}
             disabled={option.disabled && option.disabled}
             value={option.value}
           >

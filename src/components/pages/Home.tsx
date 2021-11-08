@@ -2,7 +2,10 @@ import styled from 'styled-components';
 import Search from '../elements/Search';
 import { Padding } from '../mixins/Mixins';
 import CountryCard from '../elements/CountryCard';
-import { useFilteredCountries } from '../../contexts/countriesContext';
+import { useCountries } from '../../hooks/useCountries';
+import { useEffect, useState } from 'react';
+import { ICountry } from '../../types';
+import { useSearch } from '../../hooks/useSearch';
 
 const Container = styled.div`
   position: relative;
@@ -18,17 +21,27 @@ const CountryContainer = styled.div`
 `;
 
 const Home = (): JSX.Element => {
-  const { filteredData, isError, isLoading } = useFilteredCountries();
+  const [filteredCountries, setFilteredCountries] = useState<ICountry[] | null>(
+    null
+  );
+  const { countriesAPI, isError, isLoading } = useCountries();
+  const { countrySearch, regionFilter, countriesToShow } = useSearch();
+
+  useEffect(() => {
+    countriesAPI &&
+      setFilteredCountries(
+        countriesAPI.filter({ countrySearch, regionFilter, countriesToShow })
+      );
+  }, [countriesAPI, countrySearch, regionFilter, countriesToShow]);
 
   return (
     <Container>
       <Search />
-
       {isLoading && <h4>Loading...</h4>}
       {isError && <h4>An error ocurred..</h4>}
       {!isLoading && !isError && (
         <CountryContainer>
-          {filteredData?.map((country, index) => (
+          {filteredCountries?.map((country, index) => (
             <CountryCard key={index} country={country} />
           ))}
         </CountryContainer>

@@ -1,5 +1,5 @@
-import React, { useContext, createContext, useState } from 'react';
-import { ITheme, lightTheme } from './themes';
+import React, { createContext, useState } from 'react';
+import { ITheme, lightTheme } from '../styles/themes';
 
 interface IThemeContext {
   theme: ITheme;
@@ -11,13 +11,11 @@ const ThemeContext = createContext<IThemeContext>({
   setTheme: () => {},
 });
 
-const useThemeStore = () => useContext(ThemeContext);
-
 interface IThemeStoreProps {
   children: React.ReactNode;
 }
 
-const ThemeStore = ({ children }: IThemeStoreProps): JSX.Element => {
+const ThemeContextProvider = ({ children }: IThemeStoreProps): JSX.Element => {
   const [theme, setTheme] = useState<ITheme>(lightTheme);
 
   return (
@@ -27,4 +25,4 @@ const ThemeStore = ({ children }: IThemeStoreProps): JSX.Element => {
   );
 };
 
-export { ThemeStore, useThemeStore };
+export { ThemeContextProvider, ThemeContext };

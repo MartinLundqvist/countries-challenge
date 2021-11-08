@@ -1,6 +1,6 @@
 import styled from 'styled-components';
-import { useThemeStore } from '../contexts/themeContext';
-import { darkTheme, lightTheme } from '../contexts/themes';
+import { useTheme } from '../hooks/useTheme';
+import { darkTheme, lightTheme } from '../styles/themes';
 import { Padding, BoxShadow } from './mixins/Mixins';
 import MoonIcon from './elements/MoonIcon';
 
@@ -23,7 +23,7 @@ const StyledH6 = styled.h6`
 `;
 
 const Header = (): JSX.Element => {
-  const { theme, setTheme } = useThemeStore();
+  const { theme, setTheme } = useTheme();
 
   const switchTheme = () => {
     if (theme === darkTheme) {
