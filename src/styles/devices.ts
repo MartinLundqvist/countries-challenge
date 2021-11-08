@@ -1,1 +1,1 @@
-export const mobile = '(max-width: 425px)';
+export const mobile = '(max-width: 640px)';

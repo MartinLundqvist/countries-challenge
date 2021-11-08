@@ -1,17 +1,11 @@
 import styled from 'styled-components';
+import Page from '../elements/Page';
 import Search from '../elements/Search';
-import { Padding } from '../mixins/Mixins';
 import CountryCard from '../elements/CountryCard';
 import { useCountries } from '../../hooks/useCountries';
 import { useEffect, useState } from 'react';
 import { ICountry } from '../../types';
 import { useSearch } from '../../hooks/useSearch';
-
-const Container = styled.div`
-  position: relative;
-  top: ${(props) => props.theme.sizes.header};
-  ${Padding};
-`;
 
 const CountryContainer = styled.div`
   display: flex;
@@ -35,7 +29,7 @@ const Home = (): JSX.Element => {
   }, [countriesAPI, countrySearch, regionFilter, countriesToShow]);
 
   return (
-    <Container>
+    <Page>
       <Search />
       {isLoading && <h4>Loading...</h4>}
       {isError && <h4>An error ocurred..</h4>}
@@ -46,7 +40,7 @@ const Home = (): JSX.Element => {
           ))}
         </CountryContainer>
       )}
-    </Container>
+    </Page>
   );
 };
 

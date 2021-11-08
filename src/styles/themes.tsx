@@ -8,13 +8,15 @@ export interface ITheme {
   sizes: {
     padding: string;
     header: string;
+    footer: string;
     bodyFontSize: string;
   };
 }
 
-const padding = 'min(2rem, 5vw)';
+const padding = 'max(2rem, 5vw)';
 const header = '4rem';
-const bodyFontSize = '0.7rem';
+const footer = '4rem';
+const bodyFontSize = 'clamp(0.7rem, 1.8vw, 1.0rem)';
 
 const darkTheme: ITheme = {
   colors: {
@@ -27,6 +29,7 @@ const darkTheme: ITheme = {
     padding: padding,
     header: header,
     bodyFontSize: bodyFontSize,
+    footer: footer,
   },
 };
 
@@ -41,6 +44,7 @@ const lightTheme: ITheme = {
     padding: padding,
     header: header,
     bodyFontSize: bodyFontSize,
+    footer: footer,
   },
 };
 

@@ -11,9 +11,9 @@ interface ISelectOption {
 
 const countriesToShowOptions: ISelectOption[] = [
   { value: 100, option: '# Countries', disabled: true },
-  { value: 10, option: '10' },
-  { value: 25, option: '25' },
-  { value: 50, option: '50' },
+  { value: 12, option: '12' },
+  { value: 24, option: '24' },
+  { value: 48, option: '48' },
   { value: 0, option: 'All' },
 ];
 
@@ -121,7 +121,7 @@ const Search = (): JSX.Element => {
   //TODO: Replace with stateful filters...
   const clearFilters = () => {
     setCountrySearch('');
-    setCountriesToShow(10);
+    setCountriesToShow(12);
     setRegionFilter('All');
   };
 

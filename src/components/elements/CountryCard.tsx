@@ -11,8 +11,8 @@ const StyledLink = styled(Link)`
 const CardContainer = styled.div`
   display: flex;
   flex-direction: column;
-  width: 12rem;
-  height: 16rem;
+  width: 11.83rem;
+  height: 17rem;
   background: ${(props) => props.theme.colors.elements};
   border-radius: 3px;
   overflow: hidden;
@@ -34,9 +34,9 @@ interface IFlag {
 
 const Flag = styled.div<IFlag>`
   width: 100%;
-  height: 50%;
+  min-height: 50%;
   background-image: ${(props) => `url('${props.source}')`};
-  background-size: 100% 100%;
+  background-size: 100% auto;
   background-repeat: no-repeat;
 `;
 

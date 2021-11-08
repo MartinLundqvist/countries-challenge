@@ -39,7 +39,8 @@ const Header = (): JSX.Element => {
     <Container>
       <h3>Where in the world?</h3>
       <StyledH6 onClick={() => switchTheme()}>
-        <MoonIcon filled={theme === darkTheme} /> Dark Mode
+        <MoonIcon filled={theme === darkTheme} />{' '}
+        {theme === lightTheme ? 'Dark Mode' : 'Light mode'}
       </StyledH6>
     </Container>
   );

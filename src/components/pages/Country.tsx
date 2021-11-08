@@ -1,5 +1,6 @@
 import styled from 'styled-components';
-import { Padding, BoxShadow, BoxShadowHovered } from '../mixins/Mixins';
+import Page from '../elements/Page';
+import { BoxShadow, BoxShadowHovered } from '../mixins/Mixins';
 import ArrowLeftIcon from '../elements/ArrowLeftIcon';
 import { TitleBig, Property, Value } from '../elements/Typography';
 import { useParams, useNavigate } from 'react-router-dom';
@@ -8,15 +9,9 @@ import { useCountries } from '../../hooks/useCountries';
 import { IBorderingCountry, ICountry } from '../../types';
 import { mobile } from '../../styles/devices';
 
-const Container = styled.div`
-  position: relative;
-  top: ${(props) => props.theme.sizes.header};
-  ${Padding};
-`;
-
 const BackButtonContainer = styled.div`
-  margin-top: 2rem;
-  margin-bottom: 2rem;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
 `;
 
 const Button = styled.button`
@@ -44,12 +39,13 @@ const ContentContainer = styled.div`
   gap: 2rem;
 
   //Desktop
-  grid-template-columns: 2fr 1fr 1fr;
+  /* grid-template-columns: 2fr 1fr 1fr; */
+  grid-template-columns: repeat(3, auto);
   grid-template-rows: repeat(3, auto);
 
   //Mobile
-
   @media ${mobile} {
+    gap: 0.5rem;
     grid-template-columns: 1fr;
     grid-template-rows: repeat(5, auto);
   }
@@ -60,17 +56,23 @@ interface IFlag {
 }
 
 const Flag = styled.div<IFlag>`
-  width: 40vw;
+  max-width: 320px;
+  min-width: 250px;
   height: auto;
   grid-column: 1 / 2;
   grid-row: 1 / -1;
   background-image: ${(props) => `url('${props.source}')`};
   background-size: 100% auto;
+  background-position: center top;
   background-repeat: no-repeat;
 
   @media ${mobile} {
-    height: 20vh;
-    width: auto;
+    /* max-height: 215px; */
+    min-height: 170px;
+    background-position: center center;
+    /* min-height: min-content; */
+    /* height: 215px; */
+    /* max-height: 215px; */
     grid-column: 1 / -1;
     grid-row: 1 / 2;
   }
@@ -109,16 +111,19 @@ const DetailRightItem = styled.div`
 const BordersItem = styled.div`
   grid-column: 2 / -1;
   grid-row: 3 / 4;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 0.5rem;
 
   @media ${mobile} {
     grid-column: 1 / -1;
     grid-row: 5 / 6;
   }
+`;
+
+const BordersButtonsContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
 `;
 
 const Country = (): JSX.Element => {
@@ -143,7 +148,7 @@ const Country = (): JSX.Element => {
   }, [activeCountry]);
 
   return (
-    <Container>
+    <Page>
       <BackButtonContainer>
         <Button onClick={() => navigate('/')}>
           <ArrowLeftIcon /> Back
@@ -159,46 +164,48 @@ const Country = (): JSX.Element => {
           </TitleItem>
           <DetailLeftItem>
             <div>
-              <Property>Native Name: </Property>
-              <Value>
+              <Property responsive>Native Name: </Property>
+              <Value responsive>
                 {Object.values(activeCountry.name.nativeName)[0].official}
               </Value>
             </div>
             <div>
-              <Property>Population: </Property>
-              <Value>{activeCountry.population.toLocaleString()}</Value>
+              <Property responsive>Population: </Property>
+              <Value responsive>
+                {activeCountry.population.toLocaleString()}
+              </Value>
             </div>
 
             <div>
-              <Property>Region: </Property>
-              <Value>{activeCountry.region}</Value>
+              <Property responsive>Region: </Property>
+              <Value responsive>{activeCountry.region}</Value>
             </div>
             <div>
-              <Property>Subregion: </Property>
-              <Value>{activeCountry.subregion}</Value>
+              <Property responsive>Subregion: </Property>
+              <Value> responsive{activeCountry.subregion}</Value>
             </div>
 
             <div>
-              <Property>Capital: </Property>
-              <Value>{activeCountry.capital}</Value>
+              <Property responsive>Capital: </Property>
+              <Value responsive>{activeCountry.capital}</Value>
             </div>
           </DetailLeftItem>
           <DetailRightItem>
             <div>
-              <Property>Top Level Domain: </Property>
-              <Value>{activeCountry.tld[0]}</Value>
+              <Property responsive>Top Level Domain: </Property>
+              <Value responsive>{activeCountry.tld[0]}</Value>
             </div>
             <div>
-              <Property>Currencies: </Property>
-              <Value>
+              <Property responsive>Currencies: </Property>
+              <Value responsive>
                 {Object.values(activeCountry.currencies).map((currency) => (
                   <span key={currency.name}>{currency.name} </span>
                 ))}
               </Value>
             </div>
             <div>
-              <Property>Languages: </Property>
-              <Value>
+              <Property responsive>Languages: </Property>
+              <Value responsive>
                 {Object.values(activeCountry.languages).map((language) => (
                   <span key={language}>{language} </span>
                 ))}
@@ -206,19 +213,21 @@ const Country = (): JSX.Element => {
             </div>
           </DetailRightItem>
           <BordersItem>
-            <Property>Border Countries: </Property>
-            {borderingCountries.map((border) => (
-              <Button
-                key={border.name}
-                onClick={() => navigate(`/country/${border.cioc}`)}
-              >
-                {border.name}
-              </Button>
-            ))}
+            <Property responsive>Border Countries: </Property>
+            <BordersButtonsContainer>
+              {borderingCountries.map((border) => (
+                <Button
+                  key={border.name}
+                  onClick={() => navigate(`/country/${border.cioc}`)}
+                >
+                  {border.name}
+                </Button>
+              ))}
+            </BordersButtonsContainer>
           </BordersItem>
         </ContentContainer>
       )}
-    </Container>
+    </Page>
   );
 };
 
