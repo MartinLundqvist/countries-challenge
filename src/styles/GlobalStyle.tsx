@@ -7,7 +7,7 @@ const GlobalStyle = createGlobalStyle<{ theme: ITheme }>`
         box-sizing: border-box;
     }
 
-    body {
+    body  {
         margin: 0;
         background: ${(props) => props.theme.colors.background};
         color: ${(props) => props.theme.colors.text};

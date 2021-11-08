@@ -5,14 +5,19 @@ const Title = styled.h5`
   margin-bottom: 1rem;
 `;
 
+const TitleBig = styled.h2`
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+`;
+
 const Property = styled.span`
-  font-size: 0.7rem;
+  font-size: ${(props) => props.theme.sizes.bodyFontSize};
   font-weight: 600;
 `;
 
 const Value = styled.span`
-  font-size: 0.7rem;
+  font-size: ${(props) => props.theme.sizes.bodyFontSize};
   font-weight: 300;
 `;
 
-export { Title, Property, Value };
+export { Title, TitleBig, Property, Value };
