@@ -5,7 +5,6 @@ export class CountriesAPI {
 
   constructor(countries: ICountry[]) {
     this.countries = countries;
-    console.log('Creating an instance of CountriesAPI');
   }
 
   public find = (cca3: string): ICountry => {

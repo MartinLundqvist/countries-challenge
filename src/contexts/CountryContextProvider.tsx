@@ -23,7 +23,6 @@ const CountryContextProvider = ({
 
   useEffect(() => {
     const fetchCountries = async () => {
-      console.log('Fetching all countries');
       try {
         setIsError(false);
         setIsLoading(true);
