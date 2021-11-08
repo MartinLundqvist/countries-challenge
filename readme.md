@@ -2,6 +2,8 @@
 
 This is a submission to a [frontendmentor.io](https://frontendmentor.io) challenge called [REST Countries API with color theme switch](https://www.frontendmentor.io/challenges/rest-countries-api-with-color-theme-switcher-5cacc469fec04111f7b848ca).
 
+The result can be viewed at [lyndenspacetourism.netlify.app](https://lyndenspacetourism.netlify.app/).
+
 ## Technologies used
 
 - Typescript
