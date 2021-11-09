@@ -11,7 +11,6 @@ const StyledLink = styled(Link)`
 const CardContainer = styled.div`
   display: flex;
   flex-direction: column;
-  width: 11.83rem;
   height: 17rem;
   background: ${(props) => props.theme.colors.elements};
   border-radius: 3px;
@@ -34,10 +33,11 @@ interface IFlag {
 
 const Flag = styled.div<IFlag>`
   width: 100%;
-  min-height: 50%;
+  height: 60%;
   background-image: ${(props) => `url('${props.source}')`};
   background-size: 100% auto;
   background-repeat: no-repeat;
+  background-position: top center;
 `;
 
 interface ICountryCardProps {
