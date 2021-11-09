@@ -15,7 +15,7 @@ export interface ITheme {
 
 const padding = 'max(2rem, 5vw)';
 const header = '4rem';
-const footer = '4rem';
+const footer = '1rem';
 const bodyFontSize = 'clamp(0.7rem, 1.8vw, 1.0rem)';
 
 const darkTheme: ITheme = {

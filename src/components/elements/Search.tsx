@@ -2,6 +2,7 @@ import styled, { css } from 'styled-components';
 import { BoxShadow, BoxShadowHovered } from '../mixins/Mixins';
 import { useSearch } from '../../hooks/useSearch';
 import { useEffect } from 'react';
+import MoonIcon from '../elements/MoonIcon';
 
 interface ISelectOption {
   disabled?: boolean;
@@ -11,9 +12,9 @@ interface ISelectOption {
 
 const countriesToShowOptions: ISelectOption[] = [
   { value: 100, option: '# Countries', disabled: true },
-  { value: 12, option: '12' },
-  { value: 24, option: '24' },
-  { value: 48, option: '48' },
+  { value: 10, option: '10' },
+  { value: 20, option: '20' },
+  { value: 50, option: '50' },
   { value: 0, option: 'All' },
 ];
 
@@ -59,8 +60,8 @@ const Container = styled.div`
   flex-direction: row;
   flex-wrap: wrap;
   align-items: center;
-  padding-top: 1rem;
-  padding-bottom: 1rem;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
   gap: 1rem;
 `;
 
@@ -70,6 +71,7 @@ const Sizing = css`
   border-radius: 3px;
   background-color: ${(props) => props.theme.colors.elements};
   color: ${(props) => props.theme.colors.input};
+  font-size: 0.7rem;
   outline: none;
   ${BoxShadow};
   &:hover {
@@ -121,7 +123,7 @@ const Search = (): JSX.Element => {
   //TODO: Replace with stateful filters...
   const clearFilters = () => {
     setCountrySearch('');
-    setCountriesToShow(12);
+    setCountriesToShow(10);
     setRegionFilter('All');
   };
 

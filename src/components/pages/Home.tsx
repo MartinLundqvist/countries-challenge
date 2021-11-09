@@ -8,10 +8,9 @@ import { ICountry } from '../../types';
 import { useSearch } from '../../hooks/useSearch';
 
 const CountryContainer = styled.div`
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  gap: 2rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  grid-gap: 3rem;
 `;
 
 const Home = (): JSX.Element => {

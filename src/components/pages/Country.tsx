@@ -39,7 +39,6 @@ const ContentContainer = styled.div`
   gap: 2rem;
 
   //Desktop
-  /* grid-template-columns: 2fr 1fr 1fr; */
   grid-template-columns: repeat(3, auto);
   grid-template-rows: repeat(3, auto);
 
@@ -48,6 +47,7 @@ const ContentContainer = styled.div`
     gap: 0.5rem;
     grid-template-columns: 1fr;
     grid-template-rows: repeat(5, auto);
+    justify-content: center;
   }
 `;
 
@@ -182,7 +182,7 @@ const Country = (): JSX.Element => {
             </div>
             <div>
               <Property responsive>Subregion: </Property>
-              <Value> responsive{activeCountry.subregion}</Value>
+              <Value responsive>{activeCountry.subregion}</Value>
             </div>
 
             <div>

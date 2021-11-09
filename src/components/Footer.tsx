@@ -3,11 +3,8 @@ import { Padding, BoxShadow } from './mixins/Mixins';
 
 const Container = styled.div`
   position: relative;
-  /* bottom: 0;
-  left: 0; */
   display: flex;
   width: 100%;
-  /* height: ${(props) => props.theme.sizes.footer}; */
   justify-content: center;
   z-index: 1;
 `;
