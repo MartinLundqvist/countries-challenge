@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { Padding, BoxShadow } from './mixins/Mixins';
+import { Padding, BoxShadow } from '../mixins/Mixins';
 
 const Container = styled.div`
   position: relative;

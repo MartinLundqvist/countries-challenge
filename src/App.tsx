@@ -3,10 +3,10 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
 import GlobalStyle from './styles/GlobalStyle';
 import { useTheme } from './hooks/useTheme';
-import Header from './components/Header';
+import Header from './components/elements/Header';
 import Home from './components/pages/Home';
 import Country from './components/pages/Country';
-import Footer from './components/Footer';
+import Footer from './components/elements/Footer';
 
 const App = (): JSX.Element => {
   const { theme } = useTheme();

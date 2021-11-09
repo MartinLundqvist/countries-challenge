@@ -2,7 +2,6 @@ import styled, { css } from 'styled-components';
 import { BoxShadow, BoxShadowHovered } from '../mixins/Mixins';
 import { useSearch } from '../../hooks/useSearch';
 import { useEffect } from 'react';
-import MoonIcon from '../elements/MoonIcon';
 
 interface ISelectOption {
   disabled?: boolean;

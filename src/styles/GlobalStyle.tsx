@@ -14,6 +14,11 @@ const GlobalStyle = createGlobalStyle<{ theme: ITheme }>`
         font-family: 'Nunito Sans', sans-serif;
     }
 
+    ::placeholder {
+        color:${(props) => props.theme.colors.text};
+        opacity: 0.5; 
+    }
+
 `;
 
 export default GlobalStyle;

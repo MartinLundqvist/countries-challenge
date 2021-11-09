@@ -35,9 +35,9 @@ const Flag = styled.div<IFlag>`
   width: 100%;
   height: 60%;
   background-image: ${(props) => `url('${props.source}')`};
-  background-size: 100% auto;
+  background-size: cover;
   background-repeat: no-repeat;
-  background-position: top center;
+  background-position: center center;
 `;
 
 interface ICountryCardProps {
