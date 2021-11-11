@@ -10,7 +10,7 @@ interface ISelectOption {
 }
 
 const countriesToShowOptions: ISelectOption[] = [
-  { value: 100, option: '# Countries', disabled: true },
+  { value: 10, option: '# Countries', disabled: true },
   { value: 10, option: '10' },
   { value: 20, option: '20' },
   { value: 50, option: '50' },
@@ -19,7 +19,7 @@ const countriesToShowOptions: ISelectOption[] = [
 
 const regionsOptions: ISelectOption[] = [
   {
-    value: 'X',
+    value: 'All',
     option: 'Filter by region',
     disabled: true,
   },
@@ -119,15 +119,14 @@ const Search = (): JSX.Element => {
     }
   };
 
-  //TODO: Replace with stateful filters...
-  const clearFilters = () => {
+  const initiateFilters = () => {
     setCountrySearch('');
     setCountriesToShow(10);
     setRegionFilter('All');
   };
 
   useEffect(() => {
-    clearFilters();
+    initiateFilters();
   }, []);
 
   return (
