@@ -67,12 +67,8 @@ const Flag = styled.div<IFlag>`
   background-repeat: no-repeat;
 
   @media ${mobile} {
-    /* max-height: 215px; */
     min-height: 170px;
     background-position: center center;
-    /* min-height: min-content; */
-    /* height: 215px; */
-    /* max-height: 215px; */
     grid-column: 1 / -1;
     grid-row: 1 / 2;
   }
@@ -150,7 +146,7 @@ const Country = (): JSX.Element => {
   return (
     <Page>
       <BackButtonContainer>
-        <Button onClick={() => navigate('/')}>
+        <Button onClick={() => navigate(-1)}>
           <ArrowLeftIcon /> Back
         </Button>
       </BackButtonContainer>
