@@ -21,13 +21,9 @@ The result can be viewed at [lyndenspacetourism.netlify.app](https://lyndenspace
 
 ## Current issues
 
-- Image size handling is still far from perfect. Flags are different sizes and the Country detail page looks clumpsy on large screens
+- Image size handling is still far from perfect. Flags don't come out perfect on some device sizes
 - The country detail page is generally suffering from my poor design skills...
 - Further issues may appear...
-
-### Attribution
-
-The moon and arrow icons were picked up at [FontAwesome](https://fontawesome.com/license)
 
 ---
 

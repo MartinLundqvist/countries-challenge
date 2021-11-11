@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { useTheme } from '../../hooks/useTheme';
 import { darkTheme, lightTheme } from '../../styles/themes';
 import { Padding, BoxShadow } from '../mixins/Mixins';
-import MoonIcon from './MoonIcon';
+import { MoonIcon } from './Icons';
 
 const Container = styled.div`
   position: fixed;

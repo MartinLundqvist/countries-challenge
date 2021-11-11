@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import Page from '../elements/Page';
 import { BoxShadow, BoxShadowHovered } from '../mixins/Mixins';
-import ArrowLeftIcon from '../elements/ArrowLeftIcon';
+import { ArrowLeftIcon } from '../elements/Icons';
 import { TitleBig, Property, Value } from '../elements/Typography';
 import { useParams, useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
